@@ -1,8 +1,7 @@
-import React from "react";
-import axios from "axios";
-import CharactersCards from "../components/CharactersCards/CharactersCards";
+import React from 'react';
+import axios from 'axios';
 
-const API_URL = "https://rickandmortyapi.com/api/character/";
+const API_URL = 'https://rickandmortyapi.com/api/character/';
 
 class RickAndMortyCharactersCards extends React.Component {
   state = {
@@ -15,9 +14,7 @@ class RickAndMortyCharactersCards extends React.Component {
     axios
       .get(API_URL)
       .then(({ data: { results } }) => {
-        setTimeout(() => {
-          this.setState({ characters: results, loading: false });
-        }, 5000);
+        this.setState({ characters: results, loading: false });
       })
       .catch((error) => {
         this.setState({ error });
@@ -25,15 +22,8 @@ class RickAndMortyCharactersCards extends React.Component {
   }
 
   render() {
-    const { characters, loading, error } = this.state;
-
-    return (
-      <CharactersCards
-        characters={characters}
-        loading={loading}
-        error={error}
-      />
-    );
+    console.log(this.props);
+    return this.props.render(this.state);
   }
 }
 

@@ -1,18 +1,15 @@
-import React from "react";
+import React from 'react';
 
-import CharacterCard from "./CharacterCard/CharacterCard";
-import ProfileRow from "./CharacterCard/ProfileRow/ProfileRow";
-import Avatar from "./CharacterCard/ProfileRow/Avatar";
-import FetchError from "../shared/FetchError/FetchError";
-import LoadingSpinner from "../shared/LoadingSpinner/LoadingSpinner";
-import DescriptionWithAutumnIcons from "./CharacterCard/ProfileRow/Description/DescriptionWithAutumnIcons";
+// import { compose } from 'recompose';
+// import withHandleError from '../shared/hoc/withHandleError';
+// import withLoading from '../shared/hoc/withLoading';
 
-const CharactersCards = ({ characters, loading, error }) => {
-  if (error) {
-    return <FetchError />;
-  } else if (loading) {
-    return <LoadingSpinner />;
-  }
+import CharacterCard from './CharacterCard/CharacterCard';
+import ProfileRow from './CharacterCard/ProfileRow/ProfileRow';
+import Avatar from './CharacterCard/ProfileRow/Avatar';
+import DescriptionWithAutumnIcons from './CharacterCard/ProfileRow/Description/DescriptionWithAutumnIcons';
+
+const CharactersCards = ({ characters }) => {
   return characters.map(({ name, image, species, gender }) => (
     <CharacterCard key={name}>
       <ProfileRow>
@@ -28,3 +25,4 @@ const CharactersCards = ({ characters, loading, error }) => {
 };
 
 export default CharactersCards;
+// export default compose(withLoading, withHandleError)(CharactersCards);
